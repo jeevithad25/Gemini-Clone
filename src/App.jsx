@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Login from './components/Login/Login'
 import Sidebar from './components/Sidebar/Sidebar'
 import Main from './components/Main/Main'
+import { auth } from './firebase'
+import { getRedirectResult } from 'firebase/auth'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -11,14 +13,24 @@ const App = () => {
     setTheme(theme === 'light' ? 'dark' : 'light')
   }
 
-  if(!user) {
-    return <Login onLogin={setUser}/>
+  useEffect(() => {
+    getRedirectResult(auth).then((result) => {
+      if (result?.user) setUser(result.user)
+    })
+    const unsubscribe = auth.onAuthStateChanged((u) => {
+      if (u) setUser(u)
+    })
+    return () => unsubscribe()
+  }, [])
+
+  if (!user) {
+    return <Login onLogin={setUser} />
   }
 
   return (
     <div className={`app ${theme}`}>
-      <Sidebar user={user} toggleTheme={toggleTheme} theme={theme}/>
-      <Main user={user}/>
+      <Sidebar user={user} toggleTheme={toggleTheme} theme={theme} />
+      <Main user={user} />
     </div>
   )
 }
