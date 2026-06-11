@@ -2,7 +2,6 @@
     flex: 1;
     height: 100vh;
     overflow-y: auto;
-    padding-bottom: 0;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -133,6 +132,9 @@
     padding: 0px 5%;
     max-height: 70vh;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .result::-webkit-scrollbar{
