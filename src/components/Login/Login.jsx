@@ -1,15 +1,20 @@
-import { auth, provider, signInWithPopup } from '../../firebase'
+import { auth, provider } from '../../firebase'
+import { signInWithRedirect, getRedirectResult } from 'firebase/auth'
+import { useEffect } from 'react'
 import './Login.css'
 
 const Login = ({ onLogin }) => {
 
-  const handleLogin = async () => {
-    try {
-      const result = await signInWithPopup(auth, provider)
-      onLogin(result.user)
-    } catch (error) {
-      console.log(error.message)
-    }
+  useEffect(() => {
+    getRedirectResult(auth).then((result) => {
+      if (result?.user) {
+        onLogin(result.user)
+      }
+    })
+  }, [])
+
+  const handleLogin = () => {
+    signInWithRedirect(auth, provider)
   }
 
   return (
