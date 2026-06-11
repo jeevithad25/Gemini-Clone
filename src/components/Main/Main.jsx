@@ -35,11 +35,15 @@ const Main = ({user}) => {
   const smartCards = useMemo(() => getSmartSuggestions(), [refreshKey])
 
   return (
-    <div className='main'>
+    <div className="main">
+
+      {/* NAV */}
       <div className="nav">
         <p>Gemini</p>
         <img src={user.photoURL} alt="" />
       </div>
+
+      {/* SCROLLABLE MIDDLE AREA */}
       <div className="main-container">
         {!showResult
           ? <>
@@ -57,20 +61,27 @@ const Main = ({user}) => {
                     cursor: 'pointer',
                     fontSize: '13px',
                     marginTop: '10px'
-                  }}>
+                  }}
+                >
                   🔄 Refresh suggestions
                 </button>
               </div>
+
               <div className="cards">
                 {smartCards.map((item, index) => (
-                  <div className="card" key={index} onClick={() => setInput(item.text)}>
+                  <div
+                    className="card"
+                    key={index}
+                    onClick={() => setInput(item.text)}
+                  >
                     <p>{item.text}</p>
                     <img src={item.icon} alt="" />
                   </div>
                 ))}
               </div>
             </>
-          : <div className='result'>
+
+          : <div className="result">
               <div className="result-title">
                 <img src={user.photoURL} alt="" />
                 <p>{recentPrompt}</p>
@@ -78,29 +89,46 @@ const Main = ({user}) => {
               <div className="result-data">
                 <img src={assets.gemini_icon} alt="" />
                 {loading
-                  ? <div className='loader'>
+                  ? <div className="loader">
                       <hr />
                       <hr />
                       <hr />
                     </div>
-                  : <p dangerouslySetInnerHTML={{__html:resultData}}></p>
+                  : <p dangerouslySetInnerHTML={{__html: resultData}}></p>
                 }
               </div>
             </div>
         }
-
-        <div className="main-bottom">
-          <div className="search-box">
-            <input onChange={(e)=>setInput(e.target.value)} value={input} type="text" placeholder='Enter a prompt here' />
-            <div>
-              <img src={assets.gallery_icon} alt="" />
-              <img src={assets.mic_icon} alt="" onClick={handleVoice} style={{cursor:'pointer'}} />
-              {input?<img onClick={()=>onSent()} src={assets.send_icon} alt="" />:null}
-            </div>
-          </div>
-          <p className="bottom-info">Gemini may display inaccurate info, including about people, so double-check its response.</p>
-        </div>
       </div>
+
+      {/* INPUT BAR — OUTSIDE scroll area, always at bottom */}
+      <div className="main-bottom">
+        <div className="search-box">
+          <input
+            onChange={(e) => setInput(e.target.value)}
+            value={input}
+            type="text"
+            placeholder="Enter a prompt here"
+          />
+          <div>
+            <img src={assets.gallery_icon} alt="" />
+            <img
+              src={assets.mic_icon}
+              alt=""
+              onClick={handleVoice}
+              style={{cursor:'pointer'}}
+            />
+            {input
+              ? <img onClick={() => onSent()} src={assets.send_icon} alt="" />
+              : null
+            }
+          </div>
+        </div>
+        <p className="bottom-info">
+          Gemini may display inaccurate info, including about people, so double-check its response.
+        </p>
+      </div>
+
     </div>
   )
 }
