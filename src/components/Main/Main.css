@@ -239,7 +239,7 @@
   }
 
   .main-bottom {
-    padding: 10px 15px;
+    padding-bottom: 70px;
   }
 
   .main .card {
@@ -261,8 +261,11 @@
     border-top: 1px solid #eee;
     background: white;
     flex-shrink: 0;
-    z-index: 999;
-    position: relative;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
   }
 
   .mobile-nav img {
