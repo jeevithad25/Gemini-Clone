@@ -128,7 +128,14 @@ const Main = ({user}) => {
           Gemini may display inaccurate info, including about people, so double-check its response.
         </p>
       </div>
-
+      {/* Mobile bottom nav */}
+      <div className="mobile-nav">
+        <img src={assets.menu_icon} alt="menu"/>
+        <img src={assets.plus_icon} alt="new chat" />
+        <img src={assets.history_icon} alt="history" />
+        <img src={assets.question_icon} alt="help" />
+        <img src={assets.setting_icon} alt="settings" />
+      </div>
     </div>
   )
 }

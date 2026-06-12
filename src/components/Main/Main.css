@@ -3,6 +3,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .main .nav{
@@ -22,10 +23,10 @@
 .main-container{
     flex: 1;
     overflow-y: auto;
-    max-width: 900px;
+    max-width: 100%;
     margin: 0 auto;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 40px;
 }
 
 .main .greet{
@@ -84,8 +85,8 @@
 .main-bottom{
     flex-shrink: 0;
     width: 100%;
-    max-width: 900px;
-    padding: 10px 20px 20px;
+    max-width: 100%;
+    padding: 10px 40px 20px;
     margin: 0 auto;
     background: white;
 }
@@ -231,8 +232,32 @@
   }
 
   .main .card {
+    flex: 1 1 calc(50% - 10px);
     min-width: 140px;
-    height: 160px;
+    height: 150px;
     font-size: 14px;
   }
+  
+  .sidebar{
+    display: none;
+  }
+
+  .mobile-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    background: white;
+    flex-shrink: 0;
+  }
+
+  .mobile-nav img {
+    width: 24px;
+    cursor: pointer;
+  }
+}
+
+.mobile-nav {
+    display: none;
 }
