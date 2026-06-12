@@ -261,11 +261,16 @@
     border-top: 1px solid #eee;
     background: white;
     flex-shrink: 0;
+    z-index: 999;
+    position: relative;
   }
 
   .mobile-nav img {
     width: 24px;
     cursor: pointer;
+    pointer-events: all !important;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
