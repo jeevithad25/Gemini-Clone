@@ -5,8 +5,7 @@ import { Context } from '../../context/Context'
 import { auth } from '../../firebase'
 import { signOut } from 'firebase/auth'
 
-const Sidebar = ({user, toggleTheme, theme}) => {
-  const [extended, setExtended] = useState(false)
+const Sidebar = ({user, toggleTheme, theme, extended, setExtended}) => {
   const [activePanel, setActivePanel] = useState(null)
   const {onSent, prevPrompts, setRecentPrompt, newChat} = useContext(Context)
 

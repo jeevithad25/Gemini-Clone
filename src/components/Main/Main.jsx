@@ -3,8 +3,8 @@ import './Main.css'
 import { assets } from '../../assets/assets'
 import { Context } from '../../context/Context'
 
-const Main = ({user}) => {
-  const {onSent, recentPrompt, showResult, loading, resultData, setInput, input} = useContext(Context)
+const Main = ({user, setExtended}) => {
+  const {onSent, recentPrompt, showResult, loading, resultData, setInput, input, newChat} = useContext(Context)
   const [refreshKey, setRefreshKey] = useState(0)
 
   const handleVoice = () => {
@@ -130,13 +130,16 @@ const Main = ({user}) => {
       </div>
       {/* Mobile bottom nav */}
       <div className="mobile-nav">
-        <img src={assets.menu_icon} alt="menu"/>
-        <img src={assets.plus_icon} alt="new chat" />
-        <img src={assets.history_icon} alt="history" />
-        <img src={assets.question_icon} alt="help" />
-        <img src={assets.setting_icon} alt="settings" />
+       <img src={assets.menu_icon} alt="menu"
+       onClick={() => setExtended(prev => !prev)} />
+       <img src={assets.plus_icon} alt="new chat"
+       onClick={() => newChat()} />
+       <img src={assets.history_icon} alt="history"
+       onClick={() => setExtended(true)} />
+       <img src={assets.question_icon} alt="help" />
+       <img src={assets.setting_icon} alt="settings" />
       </div>
-    </div>
+  </div>
   )
 }
 
