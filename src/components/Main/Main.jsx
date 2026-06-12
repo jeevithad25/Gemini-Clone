@@ -131,7 +131,7 @@ const Main = ({user, setExtended}) => {
       {/* Mobile bottom nav */}
       <div className="mobile-nav">
        <img src={assets.menu_icon} alt="menu"
-       onClick={() => alert('clicked!')} />
+       onClick={() => setExtended(prev=> !prev)} />
        <img src={assets.plus_icon} alt="new chat"
        onClick={() => newChat()} />
        <img src={assets.history_icon} alt="history"
