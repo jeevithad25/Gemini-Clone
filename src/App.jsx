@@ -8,7 +8,7 @@ import { getRedirectResult } from 'firebase/auth'
 const App = () => {
   const [user, setUser] = useState(null)
   const [theme, setTheme] = useState('light')
-  const [extended, setExtended] = useState(false) 
+  const [extended, setExtended] = useState(true) 
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light')
