@@ -102,12 +102,12 @@
     width: 100%;
     border: 1px solid #333;
     box-sizing: border-box;
-    overflow: hidden;
 }
 
 .search-box img{
     width: 24px;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .search-box input{
@@ -117,12 +117,14 @@
     outline: none;
     padding: 8px;
     font-size: 18px;
+    min-width: 0;
 }
 
 .search-box div{
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
+    flex-shrink: 0;
 }
 .main .bottom-info{
     font-size: 13px;
