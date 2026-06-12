@@ -31,7 +31,7 @@
 
 .main .greet{
     margin: 50px 0px;
-    font-size: 56px;
+    font-size: 40px;
     color: #c4c7c5;
     font-weight: 500;
     padding: 20px;
@@ -188,9 +188,9 @@
     line-height: 1.8;
 }
 
-@media (max-width:600px) {
+@media (max-width: 769px) {
     .main-bottom input{
-        flex: none;
+        flex: none !important;
         width: 150px;
     }
     .main-bottom img{
@@ -201,6 +201,9 @@
     }
     .search-box div{
         gap: 5px;
+    }
+    .sidebar{
+        display: flex;
     }
 }
 
@@ -213,7 +216,7 @@ mobile-nav {
     display: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
 
   .main .nav {
     padding: 10px 15px;
@@ -247,7 +250,7 @@ mobile-nav {
   }
 
   .mobile-nav {
-    display: flex;
+    display: flex !important;
     justify-content: space-around;
     align-items: center;
     padding: 10px 0;
